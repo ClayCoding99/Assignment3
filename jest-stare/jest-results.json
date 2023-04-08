@@ -1,0 +1,302 @@
+{
+  "numFailedTestSuites": 0,
+  "numFailedTests": 0,
+  "numPassedTestSuites": 1,
+  "numPassedTests": 15,
+  "numPendingTestSuites": 0,
+  "numPendingTests": 0,
+  "numRuntimeErrorTestSuites": 0,
+  "numTodoTests": 0,
+  "numTotalTestSuites": 1,
+  "numTotalTests": 15,
+  "openHandles": [],
+  "snapshot": {
+    "added": 0,
+    "didUpdate": false,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0
+  },
+  "startTime": 1679717436888,
+  "success": false,
+  "testResults": [
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 15,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1679717451632,
+        "runtime": 14670,
+        "slow": true,
+        "start": 1679717436962
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "testFilePath": "D:\\BCIT\\Term4\\COMP4537\\assignment2-jwt-ClayCoding99\\authServer.test.js",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "First set of tests from the readme"
+          ],
+          "duration": 102,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints First set of tests from the readme Tests the /register endpoint",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "Tests the /register endpoint"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "First set of tests from the readme"
+          ],
+          "duration": 130,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints First set of tests from the readme login returns JWT access and refresh tokens",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 3,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "login returns JWT access and refresh tokens"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "First set of tests from the readme"
+          ],
+          "duration": 101,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints First set of tests from the readme Test the login throws an error when invalid credentials are provided",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "Test the login throws an error when invalid credentials are provided"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "First set of tests from the readme"
+          ],
+          "duration": 157,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints First set of tests from the readme Test that the /requestNewAccessToken endpoint returns a new JWT access token for a valid refresh token",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "Test that the /requestNewAccessToken endpoint returns a new JWT access token for a valid refresh token"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "First set of tests from the readme"
+          ],
+          "duration": 38,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints First set of tests from the readme - Test that the /requestNewAccessToken endpoint throws a PokemonAuthError for an invalid or missing refresh token",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "- Test that the /requestNewAccessToken endpoint throws a PokemonAuthError for an invalid or missing refresh token"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "First set of tests from the readme"
+          ],
+          "duration": 124,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints First set of tests from the readme - Test that the refresh token is added to the refreshTokens array on login and removed on logout",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "- Test that the refresh token is added to the refreshTokens array on login and removed on logout"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "First set of tests from the readme"
+          ],
+          "duration": 120,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints First set of tests from the readme - Test that the JWT access token can be decoded and contains the correct user data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "- Test that the JWT access token can be decoded and contains the correct user data"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "Second set of tests from the readme"
+          ],
+          "duration": 287,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints Second set of tests from the readme Register, login, and then make a request with a valid JWT access token",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 4,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "Register, login, and then make a request with a valid JWT access token"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "Second set of tests from the readme"
+          ],
+          "duration": 36,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints Second set of tests from the readme unauthentical user cannot access protected route",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "unauthentical user cannot access protected route"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "Second set of tests from the readme"
+          ],
+          "duration": 11151,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints Second set of tests from the readme access protected route with expired JWT access token",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "access protected route with expired JWT access token"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "Second set of tests from the readme"
+          ],
+          "duration": 26,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints Second set of tests from the readme access protected route with invalid JWT access token",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "access protected route with invalid JWT access token"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "Second set of tests from the readme"
+          ],
+          "duration": 161,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints Second set of tests from the readme access protected route with valid refresh token",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "access protected route with valid refresh token"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "Second set of tests from the readme"
+          ],
+          "duration": 160,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints Second set of tests from the readme non-admin user cannot access admin protected route",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "non-admin user cannot access admin protected route"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "Second set of tests from the readme"
+          ],
+          "duration": 241,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints Second set of tests from the readme access protected route after logout",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "access protected route after logout"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Server Endpoints",
+            "Last set of tests from the readme"
+          ],
+          "duration": 8,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Server Endpoints Last set of tests from the readme should handle invalid HTTP requests",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should handle invalid HTTP requests"
+        }
+      ],
+      "failureMessage": null
+    }
+  ],
+  "wasInterrupted": false
+}

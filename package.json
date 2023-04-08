@@ -1,0 +1,38 @@
+{
+  "name": "assignment2-jwt-claycoding99",
+  "version": "1.0.0",
+  "description": "Assignment 2",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --reporters default jest-stare --coverage --detectOpenHandles --runInBand --testTimeout=60000",
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp4537-w23/assignment2-jwt-ClayCoding99.git"
+  },
+  "author": "Clayton Hunter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/comp4537-w23/assignment2-jwt-ClayCoding99/issues"
+  },
+  "homepage": "https://github.com/comp4537-w23/assignment2-jwt-ClayCoding99#readme",
+  "dependencies": {
+    "@shelf/jest-mongodb": "^4.1.7",
+    "base-64": "^1.0.0",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "expres": "^0.0.5",
+    "express": "^4.18.2",
+    "jest-stare": "^2.5.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.2",
+    "morgan": "^1.10.0",
+    "progress": "^2.0.3"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "supertest": "^6.3.3"
+  }
+}
