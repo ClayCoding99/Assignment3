@@ -9,6 +9,9 @@ const cors = require("cors")
 const bcrypt = require("bcrypt")
 const http = require('http');
 
+const requestModel = require("./requestModel.js");
+const errorModel = require("./errorModel.js");
+
 const {
   PokemonBadRequest,
   PokemonDbError,
@@ -38,6 +41,76 @@ app.use(cors({
   exposedHeaders: ['auth-token-access', 'auth-token-refresh'],
 }))
 
+async function logRequest(req, res, next) {
+  // get the user from the request access token
+  const accessToken = req.header('auth-token-access');
+  if (!accessToken) {
+    next();
+    return;
+  }
+  let username = null;
+  let email = null;
+  try {
+    console.log("THE ACCESS TOKEN", accessToken);
+    const decoded = jwt.decode(accessToken);
+    username = decoded.user.username;
+    email = decoded.user.email;
+    console.log("username: " + username + ", email: " + email);
+  } catch (error) {
+    next();
+    return;
+  }
+
+  // if the request wont have a user, skip it
+  const url = req.url;
+  if (username === null || email === null) {
+    next();
+    return;
+  }
+
+  try {
+    // check if the request made by the user already exists, if so, increment the count
+    let request = await requestModel.findOne({ "user.username": username, "user.email": email, "route": url });
+    if (request) {
+      request.count += 1;
+      await request.save();
+      next();
+      return;
+    }
+
+    // add a new user request
+    request = await requestModel.create({
+      user: {
+        username: username,
+        email: email,
+      },
+      route: url,
+      date: Date.now(),
+      count: 1
+    });
+    await request.save();
+  } catch (error) {
+    console.log(error);
+  }
+  next();
+}
+
+async function logError(error, req, res, next) {
+  const {name, message, code} = error;
+  const route = req.url;
+  const errorDoc = await errorModel.create({
+    name: name,
+    message: message,
+    code: code,
+    route: route,
+    date: Date.now()
+  });
+  await errorDoc.save();
+}
+
+app.use(logRequest);
+app.use(logError);
+
 app.post('/register', asyncWrapper(async (req, res) => {
   try {
     const { username, password, email } = req.body
@@ -54,6 +127,7 @@ app.post('/register', asyncWrapper(async (req, res) => {
     
     res.status(201).send(user);
   } catch (error) {
+    next(error);
     res.status(500).send("Failed to create user due to invalid payload type");
   }
 }))
@@ -82,7 +156,8 @@ app.post('/requestNewAccessToken', asyncWrapper(async (req, res) => {
     res.header("auth-token-access", accessToken)
     res.status(200).send("All good!")
   } catch (error) {
-    throw new PokemonAuthError("Invalid Token: Please provide a valid token.")
+    next(error);
+    //throw new PokemonAuthError("Invalid Token: Please provide a valid token.")
   }
 }))
 
@@ -93,6 +168,7 @@ app.post('/login', asyncWrapper(async (req, res) => {
   try {
       user = await userModel.findOne({ email })
   } catch(error) {
+    next(error);
     res.setHeader("Content-Type", "text/plain");
     return res.status(500).send("Failed to find user due to invalid payload type");
   }
@@ -115,6 +191,7 @@ app.post('/login', asyncWrapper(async (req, res) => {
     user.token = refreshToken;
     user.token_invalid = false;
   } catch (error) {
+    next(error);
     res.status(500).send({error: "Failed to update user token"});
   }
 
@@ -133,5 +210,85 @@ app.get('/logout', asyncWrapper(async (req, res) => {
   await userModel.updateOne({token: user.token}, { token: null, token_invalid: true })
   res.send("Logged out")
 }))
+
+app.get(`/report`, (req, res) => {
+  const id = req.query.id;
+
+  console.log(id);
+
+  switch (id) {
+    case "1":
+      getUniqueUsers().then((result) => {
+        console.log(result);
+        res.status(200).send("Table 1");
+      });
+      break;
+    case "2":
+      res.status(200).send("Table 2");
+      break;
+    case "3":
+      GetTopUsers().then((result) => {
+        console.log(result);
+        res.status(200).send("Table 3");
+      });
+      break;
+    case "4":
+      res.status(200).send("Table 4");
+      break;
+    case "5":
+      res.status(200).send("Table 5");
+      break;
+  }
+});
+
+async function GetTopUsers() {
+  const startDate = new Date('2023-01-01');
+  const endDate = Date.now();
+
+  return await requestModel.aggregate([
+    {
+      $group: {
+        _id: '$user.email',
+        count: { $sum: '$count' }
+      }
+    },
+    {
+      $sort: { count: -1 }
+    },
+    {
+      $limit: 10 // limit to the top 10 users
+    }
+  ]);
+}
+
+async function getUniqueUsers() {
+  const startDate = new Date('2023-01-01');
+  const endDate = Date.now();
+
+  const x = await requestModel.aggregate([
+    {
+      $match: {
+        date: {
+          $gte: startDate,
+          $lte: endDate
+        }
+      }
+    },
+    {
+      $group: {
+        _id: '$user.email',
+        count: { $sum: 1 }
+      }
+    },
+    {
+      $group: {
+        _id: null,
+        uniqueUsers: { $sum: 1 }
+      }
+    }
+  ]);
+  return x;
+}
+
 
 module.exports = app;

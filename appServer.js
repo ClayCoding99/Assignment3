@@ -26,8 +26,6 @@ const { asyncWrapper } = require("./asyncWrapper.js")
 const dotenv = require("dotenv")
 dotenv.config();
 
-
-
 const app = express()
 // const port = 5000
 var pokeModel = null;
@@ -51,9 +49,6 @@ const jwt = require("jsonwebtoken")
 // const { findOne } = require("./userModel.js")
 
 
-
-
-
 // app.use(morgan("tiny"))
 app.use(morgan(":method"))
 
@@ -62,7 +57,6 @@ app.use(cors(
     exposedHeaders: ['auth-token-access']
   }
 ))
-
 
 const authUser = asyncWrapper(async (req, res, next) => {
   // const token = req.body.appid
@@ -207,6 +201,8 @@ app.patch('/api/v1/pokemon/:id', asyncWrapper(async (req, res) => {
 
 app.get('/report', (req, res) => {
   console.log("Report requested");
+
+  
   res.status(200).send(`Table ${req.query.id}`);
 });
 
