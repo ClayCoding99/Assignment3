@@ -35,7 +35,7 @@ start()
 
 app.use(express.json())
 app.use(cors({
-  exposedHeaders: ['auth-token-access', 'auth-token-refresh', 'authorization'],
+  exposedHeaders: ['auth-token-access', 'auth-token-refresh'],
 }))
 
 app.post('/register', asyncWrapper(async (req, res) => {
@@ -56,7 +56,9 @@ app.post('/register', asyncWrapper(async (req, res) => {
 const jwt = require("jsonwebtoken")
 
 app.post('/requestNewAccessToken', asyncWrapper(async (req, res) => {
-  // console.log(req.headers);
+  console.log("pinged new access token");
+  console.log(req.header('auth-token-refresh'));
+
   const refreshToken = req.header('auth-token-refresh');
   if (!refreshToken) {
     throw new PokemonAuthError("No Token: Please provide a token.")
@@ -78,6 +80,7 @@ app.post('/requestNewAccessToken', asyncWrapper(async (req, res) => {
     throw new PokemonAuthError("Invalid Token: Please provide a valid token.")
   }
 }))
+
 
 app.post('/login', asyncWrapper(async (req, res) => {
   const { username, password } = req.body
