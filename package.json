@@ -2,7 +2,7 @@
   "name": "assignment2-jwt-claycoding99",
   "version": "1.0.0",
   "description": "Assignment 2",
-  "main": "server.js",
+  "main": "authServer.js",
   "scripts": {
     "test": "jest --reporters default jest-stare --coverage --detectOpenHandles --runInBand --testTimeout=60000",
     "devStart": "nodemon server.js"
