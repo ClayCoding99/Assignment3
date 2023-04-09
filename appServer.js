@@ -57,7 +57,11 @@ const jwt = require("jsonwebtoken")
 // app.use(morgan("tiny"))
 app.use(morgan(":method"))
 
-app.use(cors())
+app.use(cors(
+  {
+    exposedHeaders: ['auth-token-access']
+  }
+))
 
 
 const authUser = asyncWrapper(async (req, res, next) => {
