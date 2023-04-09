@@ -44,6 +44,11 @@ app.post('/register', asyncWrapper(async (req, res) => {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
     const userWithHashedPassword = { ...req.body, password: hashedPassword }
+
+    const userExists = await userModel.findOne({ username, email });
+    if (userExists) {
+      res.status(400).send("User already exists");
+    }
   
     const user = await userModel.create(userWithHashedPassword);
     
@@ -83,10 +88,10 @@ app.post('/requestNewAccessToken', asyncWrapper(async (req, res) => {
 
 
 app.post('/login', asyncWrapper(async (req, res) => {
-  const { username, password } = req.body
+  const { email, password } = req.body
   let user = null;
   try {
-      user = await userModel.findOne({ username })
+      user = await userModel.findOne({ email })
   } catch(error) {
     res.setHeader("Content-Type", "text/plain");
     return res.status(500).send("Failed to find user due to invalid payload type");
