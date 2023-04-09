@@ -1,0 +1,28 @@
+.searchContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .searchCheckbox {
+    min-width: 1em;
+    max-width: 2em;
+    width: 2vw;
+    height: 16px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    margin-right: 10px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .searchLabel {
+    font-size: clamp(1em, 2vw, 2em);
+  }
+  
+  .searchLabel:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }

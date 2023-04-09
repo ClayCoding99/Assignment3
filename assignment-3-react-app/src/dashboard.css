@@ -1,0 +1,24 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dashboard-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  .dashboard-menu li {
+    margin: 10px 0;
+  }
+  
+  .dashboard-menu a {
+    font-size: 2em;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .dashboard-menu a:hover {
+    text-decoration: underline;
+  }

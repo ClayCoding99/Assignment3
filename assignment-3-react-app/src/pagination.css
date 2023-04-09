@@ -1,0 +1,36 @@
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination h1 {
+    margin-right: 2vw;
+    font-size: 4vw;
+  }
+  
+  .pagination button {
+    border: none;
+    background-color: #eee;
+    color: #333;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 2.5vw;
+  }
+  
+  .pagination button:hover {
+    background-color: #ccc;
+  }
+  
+  .pagination button.page {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .pagination button.page:hover {
+    background-color: #555;
+  }

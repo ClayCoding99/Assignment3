@@ -1,0 +1,29 @@
+.pageContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 20px;
+    justify-items: center;
+    align-items: center;
+  }
+  
+  .pageContainer img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .pageContainer img:hover {
+    cursor: pointer;
+    background-color: #333;
+  }
+
+  .selectedPokemon {
+    border: 10px solid #000000;
+  }
+
+  .search {
+    min-height: 2.5em;
+    min-width: 15em;
+    height: 3vw;
+    width: 25vw;
+  }
